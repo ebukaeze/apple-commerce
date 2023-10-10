@@ -16,6 +16,15 @@
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +33,16 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    box-sizing: border-box;
+}
+
+@layer components {
+  .headerLink {
+    @apply cursor-pointer opacity-75 transition hover:opacity-100 text-zinc-200 font-extralight px-4
+    text-sm;
+  }
+}
+.glassMorphism {
+  @apply sticky w-full bg-zinc-200
+   shadow-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-80 border border-gray-900
 }
