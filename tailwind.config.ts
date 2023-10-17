@@ -13,6 +13,13 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        body: ['Poppins', 'sans-serif'],
+      },
+      gridTemplateRows: {
+        // Simple 8 row grid
+        '2': 'repeat(8, minmax(256px, 1fr))',
+      }
     },
   },
   plugins: [],

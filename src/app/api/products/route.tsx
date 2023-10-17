@@ -5,7 +5,7 @@ import { groq } from "next-sanity";
 const query = groq`*[_type == "productDoc"]{
   _id,
     ...
-} | order(_createdAt desc)`;
+} | order(_createdAt asc)`;
 
 
 type Data ={
