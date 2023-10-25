@@ -7,13 +7,12 @@ const query = groq`*[_type == "productDoc"]{
     ...
 } | order(_createdAt asc)`;
 
-
-type Data ={
-    products: Product[],
-}
+type Data = {
+  products: Product[];
+};
 
 export async function GET(request: Request, response: Response) {
-   const products = await sanityClient.fetch(query);
+  const products = await sanityClient.fetch(query);
 
-   return new Response(JSON.stringify({products}));
+  return new Response(JSON.stringify({ products }));
 }
