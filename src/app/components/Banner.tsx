@@ -6,7 +6,7 @@ import Link from "next/link";
 const Banner = () => {
   return (
     <section
-      className="w-full flex  md:max-w-[1229px] md:mx-auto items-center justify-center flex-col h-[90vh]
+      className="w-full flex bg-slate-300  md:max-w-[1229px] md:mx-auto items-center justify-center flex-col h-[90vh]
       space-y-14 gap-y-12 sticky top-0 md:flex-row md:justify-evenly text-center sm:text-center mt-12 md:mt-2"
     >
       <div className="w-full flex flex-col items-center justify-center md:justify-start space-y-9 gap-y-8">
