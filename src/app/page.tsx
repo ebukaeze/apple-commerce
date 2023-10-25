@@ -6,6 +6,9 @@ import { fetchCategories } from "./libs/fetchCategories";
 import { fetchProducts } from "./libs/fetchProducts";
 import ProductTab from "./components/ProductTab";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import { Hero } from "./components/Hero";
 
 //Backend Code
 
@@ -28,8 +31,11 @@ export default async function Home() {
         <div className="w-full flex items-center justify-center">
           <ProductTab categories={categories} products={products} />
         </div>
-        <Cart />
+        <Hero />
+        {/* <Cart /> */}
+        <ScrollToTop />
       </section>
+      <Footer />
     </div>
   );
 }
