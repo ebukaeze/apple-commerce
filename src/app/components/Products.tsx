@@ -16,7 +16,7 @@ function Products({ product }: Props) {
   const [canShow, setCanShow] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setCanShow(false), 6000); // Set visibility to true after 1 second
+    const timer = setTimeout(() => setCanShow(false), 4000); // Set visibility to true after 1 second
     return () => clearTimeout(timer); // Clear the timeout when the component unmounts
   });
   const addItemToCart = () => {
