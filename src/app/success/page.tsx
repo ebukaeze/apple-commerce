@@ -20,7 +20,6 @@ const success = async ({
   const products = await fetchProducts(searchParams.session_id);
 
   console.log(products);
-
   return (
     <main className="grid grid-cols-1 lg:grid-cols-9">
       <Success products={products} sessionId={searchParams.session_id} />
