@@ -20,7 +20,7 @@ const ContinueCard = () => {
         >
           <div className="flex items-center justify-center">
             <div className="relative w-[360px] h-[450px] bg-white rounded-xl flex flex-col items-center justify-start py-4">
-              <div className="absolute top-2 right-2 ">
+              <div className="absolute top-2 right-2">
                 <XMarkIcon
                   height={16}
                   width={16}

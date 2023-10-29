@@ -7,7 +7,7 @@ import {
   ShoppingBagIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
 import { selectCartItems } from "../redux/cartSlice";
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header className="w-full h-14 flex items-center justify-around fixed top-0 left-0 z-50 border-none lg:fixed lg:w-full glassMorphism">
       <nav className="w-full flex px-4 items-center justify-around text-zinc-200">
-        <div className="flex items center">
+        <div className="flex items-center">
           <Link href={"/"}>
             <Image
               src={"/apple2.png"}

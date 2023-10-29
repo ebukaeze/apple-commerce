@@ -19,7 +19,7 @@ export const cartSlice = createSlice({
     addToCart: (state: CartState, action: PayloadAction<Product>) => {
       state.items = [...state.items, action.payload];
     },
-    removeCartItem: (
+    removeFromCart: (
       state: CartState,
       action: PayloadAction<{ id: string }>
     ) => {
@@ -28,12 +28,11 @@ export const cartSlice = createSlice({
       );
 
       let newCart = [...state.items];
-
       if (index >= 0) {
-        newCart.slice(index, 1);
+        newCart.splice(index, 1);
       } else {
         console.log(
-          `Can't remove this item with id:${action.payload.id} because it's not found in the Cart`
+          `Can't remove items with id: ${action.payload.id} as it's not in the Cart`
         );
       }
       state.items = newCart;
@@ -42,7 +41,7 @@ export const cartSlice = createSlice({
 });
 //type RootState = ReturnType<typeof Object>
 // Action creators are generated for each case reducer function
-export const { addToCart, removeCartItem } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 //Selector: Retrieving items in the state to different components
 export const selectCartItems = (state: RootState) => state.cart.items;
