@@ -41,8 +41,8 @@ const Success = ({ products, sessionId }: Props) => {
   return (
     <>
       <section
-        className="order-2 col-span-5 mx-auto max-w-xl pb-12 lg:mx-0 lg:max-w-none lg:pr-16
-            pt-16 xl:pl-16 2xl:pl-44"
+        className="order-2 lg:col-span-5 mx-auto max-w-xl pb-12 lg:mx-0 lg:max-w-none lg:pr-16
+            pt-16 xl:pl-16 2xl:pl-44 bg-white"
       >
         <Link href="/">
           <div className="relative ml-4 h-16 w-8 transition cursor-pointer hidden lg:inline-flex">
@@ -115,14 +115,14 @@ const Success = ({ products, sessionId }: Props) => {
       </section>
       {mounted && (
         <section
-          className="w-full order-2 mx-auto max-w-xl pb-12 lg:mx-0 lg:max-w-none lg:pr-16
-                pt-16 xl:pl-16 2xl:pl-44 overflow-y-scroll border-l border-gray-300 bg-[#fafafa]
+          className="w-full lg:order-2 order-1 mx-auto max-w-xl pb-2 lg:pb-12 lg:mx-0 lg:max-w-none lg:pr-16
+                lg:pt-16 xl:pl-16 2xl:pl-44 lg:overflow-y-scroll border-1 border-gray-300 bg-[#fafafa]
                 lg:border-1 lg:col-span-4 lg:border-0 px-4"
         >
           <div
             className={`w-full ${
               showOrderSummaryCondition && "border-b"
-            } border-gray-300 lg:hidden text-sm mb-3 `}
+            } border-gray-400 lg:hidden text-sm mb-3 bg-gray-50 py-4 px-3`}
           >
             <div className="flex items-center justify-between w-full flex-row max-w-xl mx-auto ">
               <button
@@ -130,7 +130,9 @@ const Success = ({ products, sessionId }: Props) => {
                 className="flex space-x-4"
               >
                 <ShoppingCartIcon className="h-6 w-6" />
-                <p className="text-lg text-blue-500">Show Order Summary</p>
+                <p className="text-sm md:text-base lg:text-lg text-blue-500">
+                  Show Order Summary
+                </p>
                 {showOrderSummaryCondition ? (
                   <ChevronUpIcon className="h-6 w-6" />
                 ) : (
