@@ -38,6 +38,7 @@ body {
     )
     rgb(var(--background-start-rgb));
   box-sizing: border-box;
+  font-family: var(--font-poppins);
 }
 @layer base {
   body {
@@ -46,17 +47,17 @@ body {
 }
 @layer components {
   .headerLink {
-    @apply cursor-pointer opacity-75 transition hover:opacity-100 text-zinc-100 font-extralight px-4
+    @apply cursor-pointer opacity-75 transition hover:opacity-100 text-gray-800 font-extralight px-4
     text-sm;
   }
 }
 .glassMorphism {
   @apply sticky w-full bg-black
-   shadow-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-80 border border-gray-900;
+   shadow-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-70 border border-gray-900;
 }
 
 .headerIcon {
-  @apply h-5 w-5 text-white opacity-75 hover:opacity-100 cursor-pointer;
+  @apply h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer;
 }
 
 .borderGradient {
