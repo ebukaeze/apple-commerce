@@ -2,18 +2,27 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import apple from "../../../public/apple.jpg";
 import {
   UserCircleIcon,
   ShoppingBagIcon,
   MagnifyingGlassIcon,
+  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../redux/cartSlice";
 import { useState, useEffect } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const items = useSelector(selectCartItems);
   const [showNavBar, setShowNavBar] = useState(false);
+  const router = useRouter();
+
+  //user session
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleNavBarVisibility = () => {
@@ -110,11 +119,39 @@ const Header = () => {
               }`}
             />
           </Link>
-          <UserCircleIcon
-            className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
-              showNavBar && "text-white"
-            }`}
-          />
+          {session ? (
+            <>
+              <Image
+                src={`${session?.user?.image || "/public/apple2.png"}`}
+                width={24}
+                height={24}
+                onClick={() => router.push("/client")}
+                className="h-6 w-6 rounded-full object-contain cursor-pointer"
+                alt={`${session?.user?.name}`}
+              />
+              <span>
+                {/* <ArrowLeftOnRectangleIcon
+                  className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
+                    showNavBar && "text-white"
+                  }`}
+                /> */}
+                <button
+                  className="outline-none w-max border-none bg-transparent text-sm md:text-md"
+                  onClick={() => signOut()}
+                >
+                  signout
+                </button>
+              </span>
+            </>
+          ) : (
+            <Link href={"/api/auth/signin?callbackUrl=/client"}>
+              <UserCircleIcon
+                className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
+                  showNavBar && "text-white"
+                }`}
+              />
+            </Link>
+          )}
         </div>
       </nav>
     </header>
