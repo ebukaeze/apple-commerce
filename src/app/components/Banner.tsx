@@ -36,7 +36,7 @@ const Banner = () => {
           </span>
         </div>
         <div className="flex items-center lg:justify-start justify-center gap-x-4 w-[100%] px-8">
-          <Link href={"/explore"}>
+          <Link href={"#products"} scroll={true}>
             <Button
               title="Be Pro"
               width="w-[95px]"
@@ -47,7 +47,7 @@ const Banner = () => {
               weight="font-[700]"
             ></Button>
           </Link>
-          <Link href={"/explore"}>
+          <Link href={"#products"}>
             <Button
               title="Explore Our Shop"
               width="w-content"
