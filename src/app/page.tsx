@@ -22,7 +22,10 @@ export default async function Home() {
       <main className="relative h-[186vh] w-full flex flex-col items-center">
         <Banner></Banner>
       </main>
-      <section className="w-full relative z-40 mt-[-100vh] min-h-screen bg-[#1B1B1B]">
+      <section
+        id="products"
+        className="w-full relative z-40 mt-[-100vh] min-h-screen bg-[#1B1B1B]"
+      >
         <div className="flex items-center flex-col justify-center w-full max-w-[1154px] mx-auto py-10 space-y-10 ">
           <h2 className="text-xl text-white tracking-wide font-medium">
             New Promos
