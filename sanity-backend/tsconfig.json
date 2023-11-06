@@ -15,6 +15,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "schemas/index.js",
+    "schemas/schema.js",
+    "./node_modules/@sanity/base/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

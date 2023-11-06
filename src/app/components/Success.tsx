@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Currency } from "react-tender";
 import { useMediaQuery } from "react-responsive";
+import { useSession } from "next-auth/react";
 
 interface Props {
   products: StripeProduct[];
@@ -20,6 +21,9 @@ interface Props {
 const Success = ({ products, sessionId }: Props) => {
   const [mounted, setMounted] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
+
+  //user session
+  const { data: session } = useSession();
 
   const subtotal = products.reduce(
     (acc, product) => acc + product.price.unit_amount / 100,
@@ -64,8 +68,7 @@ const Success = ({ products, sessionId }: Props) => {
               Order #{sessionId?.slice(-5)}
             </p>
             <h4 className="text-lg">
-              Thank you{" "}
-              {/* { session ? session_id.user?.name?.split(" ")[0] : "Guest"} */}
+              Thank you {session ? session.user?.name?.split(" ")[0] : "Guest"}
             </h4>
           </div>
         </div>

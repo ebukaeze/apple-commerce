@@ -21,6 +21,7 @@
     "grog": "^0.0.1",
     "next": "13.5.4",
     "next-auth": "^4.24.4",
+    "next-auth-sanity": "^1.5.3",
     "next-cloudinary": "^4.28.0",
     "next-sanity": "^5.5.8",
     "next-videos": "^1.4.1",
