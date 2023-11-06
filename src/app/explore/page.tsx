@@ -11,7 +11,7 @@ products: Product[],
 categories: Category[],
 }
 
-const page = async ({products, categories}: Props) => {
+const ExplorePage = async ({products, categories}: Props) => {
     const productItems = await fetchProducts();
     const categoriesItems = await fetchCategories();
   return (
@@ -23,4 +23,4 @@ const page = async ({products, categories}: Props) => {
   )
 }
 
-export default page
+export default ExplorePage
