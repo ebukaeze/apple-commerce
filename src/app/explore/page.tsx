@@ -11,7 +11,7 @@ products: Product[],
 categories: Category[],
 }
 
-const ExplorePage = async ({products, categories}: Props) => {
+const ExplorePage = async ({products, categories}:Props) => {
     const productItems = await fetchProducts();
     const categoriesItems = await fetchCategories();
   return (
