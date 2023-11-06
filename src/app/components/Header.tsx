@@ -70,7 +70,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/explore"
+                href="/"
                 className={`headerLink ${showNavBar && "text-zinc-200"}`}
               >
                 Explore
