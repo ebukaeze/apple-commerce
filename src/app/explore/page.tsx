@@ -6,14 +6,10 @@ import Image from 'next/image'
 import { urlFor } from '../../../sanity'
 import ExploreTab from '../components/ExploreTab'
 
-interface Props{
-products: Product[],
-categories: Category[],
-}
 
- async function ExplorePage({products, categories}:Props){
-    const productItems = await fetchProducts();
-    const categoriesItems = await fetchCategories();
+export default async function ExplorePage(){
+    const productItems:Product[] = await fetchProducts();
+    const categoriesItems:Category = await fetchCategories();
   return (
     <div className='flex w-full py-6 mt-4 space-y-6'>
         
@@ -22,5 +18,3 @@ categories: Category[],
         </div>
   )
 }
-
-export default ExplorePage;
