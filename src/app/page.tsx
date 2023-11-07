@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
-import Products from "./components/Products";
 import { fetchCategories } from "./libs/fetchCategories";
 import { fetchProducts } from "./libs/fetchProducts";
 import ProductTab from "./components/ProductTab";
-import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { Hero } from "./components/Hero";
