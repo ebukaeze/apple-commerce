@@ -13,9 +13,10 @@ import { Hero } from "./components/Hero";
 //Backend Code
 
 export default async function Home() {
-  const categories = await fetchCategories();
-  const products = await fetchProducts();
+  const category = await fetchCategories();
+  const product = await fetchProducts();
 
+  console.log(JSON.stringify(category));
   return (
     <div className="top-0 m-0 p-0 ">
       <Header></Header>
@@ -32,7 +33,7 @@ export default async function Home() {
           </h2>
         </div>
         <div className="w-full flex items-center justify-center">
-          <ProductTab categories={categories} products={products} />
+          <ProductTab categories={category} products={product} />
         </div>
         <Hero />
         {/* <Cart /> */}
