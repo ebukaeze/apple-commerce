@@ -10,13 +10,13 @@ interface Props {
 }
 
 const ProductTab = ({ categories, products }: Props) => {
+  console.log(products.map((prod) => prod.category?._ref));
   //function to show product based on category
   const showProducts = (category: number) => {
     return products
-      .filter((product) => product.category._ref === categories[category]._id)
-      .map((product) => <Products product={product} key={product._id} />);
+      .filter((product) => product.category?._ref === categories[category]._id)
+      .map((product) => <Products product={product} key={product._id} />); // filter products by category
   };
-  console.log(showProducts(0));
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <Tab.Group>
