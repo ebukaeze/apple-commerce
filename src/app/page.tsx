@@ -32,12 +32,13 @@ export default async function Home() {
 
   const category = await fetchCategories();
   const product = await fetchProducts();
-
+  console.log(category);
+  console.log(product);
   return (
     <div className="top-0 m-0 p-0 ">
-      <Header></Header>
+      <Header />
       <main className="relative h-[186vh] w-full flex flex-col items-center">
-        <Banner></Banner>
+        <Banner />
       </main>
       <section
         id="products"
