@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
-/* import { fetchCategories } from "./libs/fetchCategories";
-import { fetchProducts } from "./libs/fetchProducts"; */
+import { fetchCategories } from "./libs/fetchCategories";
+import { fetchProducts } from "./libs/fetchProducts";
 import ProductTab from "./components/ProductTab";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -10,30 +11,9 @@ import { Hero } from "./components/Hero";
 //Backend Code
 
 export default async function Home() {
-  const fetchCategories = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/categories`
-    );
+  const categories = await fetchCategories();
+  const products = await fetchProducts();
 
-    const data = await res.json();
-    const categories: Category[] = data.categories;
-    return categories;
-  };
-
-  const fetchProducts = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-
-    const data = await res.json();
-
-    const products: Product[] = data.products;
-
-    return products;
-  };
-
-  const category = await fetchCategories();
-  const product = await fetchProducts();
-  console.log(category);
-  console.log(product);
   return (
     <div className="top-0 m-0 p-0 ">
       <Header />
@@ -50,7 +30,7 @@ export default async function Home() {
           </h2>
         </div>
         <div className="w-full flex items-center justify-center">
-          <ProductTab categories={category} products={product} />
+          <ProductTab categories={categories} products={products} />
         </div>
         <Hero />
         {/* <Cart /> */}
