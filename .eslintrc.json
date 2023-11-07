@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "next", "prettier"],
+  "extends": ["next/core-web-vitals", "next"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
