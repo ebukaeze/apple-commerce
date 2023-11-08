@@ -1,4 +1,4 @@
 [build]
 
 base = "./"
-ignore = "ls ./sanity-backend"
+ignore = "ls ./sanity-backend && exit 1 || true"
