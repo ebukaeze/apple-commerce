@@ -1,4 +1,4 @@
 [build]
 
-base = "./apple-commerce"
+base = "./"
 ignore = "ls sanity-backend"
