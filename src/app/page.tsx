@@ -11,8 +11,8 @@ import { Hero } from "./components/Hero";
 //Backend Code
 
 export default async function Home() {
-  const categories = await fetchCategories();
-  const products = await fetchProducts();
+  const categories: Category[] = await fetchCategories();
+  const products: Product[] = await fetchProducts();
 
   return (
     <div className="top-0 m-0 p-0 ">

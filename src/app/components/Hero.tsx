@@ -3,14 +3,13 @@ import Link from "next/link";
 import React from "react";
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
-import bg from "../../../public/macbook.jpg";
 import { url } from "inspector";
 export const Hero = () => {
   return (
     <div
       className={`w-full h-[80vh] bg-contain bg-center flex flex-col items-center justify-start`}
       style={{
-        backgroundImage: `url(${bg.src})`,
+        backgroundImage: `url('/macbook.jpg')`,
         width: "100%",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
