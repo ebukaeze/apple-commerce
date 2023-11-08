@@ -1,0 +1,4 @@
+[build]
+
+base = "apple-commerce"
+ignore = "ls sanity-backend"
