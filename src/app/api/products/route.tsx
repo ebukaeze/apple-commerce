@@ -14,5 +14,5 @@ type Data = {
 export async function GET(request: Request, response: Response) {
   const products = await sanityClient.fetch(query);
 
-  return new Response(JSON.stringify({ products }));
+  return Response.json(products);
 }
