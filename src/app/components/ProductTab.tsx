@@ -31,7 +31,7 @@ const ProductTab = ({ categories, products }: Props) => {
          ${
            selected
              ? "borderGradient bg-[#35383C] text-white"
-             : "border-b border-[#35383C] text-[#7c7c7d]"
+             : "border-b border-[#3d3f43] text-[#7c7c7d]"
          }`
               }
             >
