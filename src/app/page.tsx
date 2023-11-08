@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
-/* import { fetchCategories } from "./libs/fetchCategories";
+import { fetchCategories } from "./libs/fetchCategories";
 import { fetchProducts } from "./libs/fetchProducts";
-import ProductTab from "./components/ProductTab"; */
+import ProductTab from "./components/ProductTab";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { Hero } from "./components/Hero";
@@ -11,8 +10,8 @@ import { Hero } from "./components/Hero";
 //Backend Code
 
 export default async function Home() {
-  /* const categories: Category[] = await fetchCategories();
-  const products: Product[] = await fetchProducts(); */
+  const categories: Category[] = await fetchCategories();
+  const products: Product[] = await fetchProducts();
 
   return (
     <div className="top-0 m-0 p-0 ">
@@ -30,7 +29,7 @@ export default async function Home() {
           </h2>
         </div>
         <div className="w-full flex items-center justify-center">
-          {/* <ProductTab categories={categories} products={products} /> */}
+          <ProductTab categories={categories} products={products} />
         </div>
         <Hero />
         {/* <Cart /> */}
