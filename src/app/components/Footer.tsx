@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <section className="w-full h-full bg-[#161616] px-6 py-4">
       <div
-        className="w-full h-[50vh] grid grid-cols-8 text-gray-200 
-         lg:mx-auto lg:max-w-[1234px] text-[12px]"
+        className="w-full grid md:h-[50vh] h-[50vh] lg:grid-cols-8 md:grid-cols-6 grid-cols-6 grid-rows-2 lg:grid-rows-1 text-gray-200 
+         lg:mx-auto lg:max-w-[1234px] text-[12px] py-4"
       >
         <div className="grid-col-start col-span-2">
           <div>
@@ -64,7 +64,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="grid-col-start col-span-1">
+        <div className="grid-col-start col-span-1 hidden md:block">
           <div>
             <h3 className="font-bold text-sm mb-3 text-gray-100">
               Entertainment

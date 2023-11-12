@@ -14,12 +14,12 @@ export const Hero = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center center",
-        height: "[80vh]",
+        height: "450px",
       }}
     >
-      <div className="flex text-white items-center flex-col justify-center p-8">
+      <div className="flex text-white text-center items-center flex-col justify-center p-8">
         <h1 className="text-4xl sm:text-6xl font-medium mb-2">MacBook Pro</h1>
-        <p className="text-2xl sm:text-3xl font-sm ">
+        <p className="text-2xl sm:text-3xl font-sm xs:text-base ">
           {" "}
           The New SuperCharged M2 Chip
         </p>

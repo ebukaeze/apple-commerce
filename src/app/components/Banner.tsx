@@ -14,15 +14,15 @@ const Banner = () => {
   return (
     <section
       className="w-full grid grid-cols-1 items-center lg:grid-cols-9 bg-[rgba(250,250,250,0.5)]  md:max-w-[1229px] md:mx-auto h-[90vh]
-      space-y-1 gap-y-1 sticky top-0 justify-items-stretch it sm:text-start mt-14 md:mt-2 lg:mt-6"
+      space-y-1 gap-y-1 sticky top-0 justify-items-stretch sm:text-start mt-8 xs:mt-12 md:mt-2 lg:mt-8"
     >
       <div className="w-full grid col-span-5 order-1 col-start-1 lg:justify-self-start space-y-6 gap-y-4">
-        <div className="w-[100%] flex mt-6 lg:mt-0 flex-col px-8 lg:text-start text-center before:absolute before:h-[300px] lg:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-transparent before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] lg:after:translate-x-1/3 after:bg-gradient-conic after:from-pink-200 after:via-sky-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-          <h1 className="text-5xl tracking-[2px] justify-self-start md:text-7xl md:leading-[6rem] text-black font-[900] sm:text-[24px] ">
+        <div className="w-[100%] flex mt-8 md:mt-4 lg:mt-0 flex-col px-8 lg:text-start text-center before:absolute before:h-[300px] lg:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-transparent before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] lg:after:translate-x-1/3 after:bg-gradient-conic after:from-pink-200 after:via-sky-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+          <h1 className="sm:text-6xl xs:text-3xl text-5xl tracking-[2px] justify-self-start md:text-7xl md:leading-[6rem] text-black md:font-[900] sm:font-[700] font-[600] sm:text-[54px] lg:font-[900] ">
             {" "}
             Empower your Vision{" "}
           </h1>
-          <span className="text-[18px] text-black font-[600] md:text-[25px] mt-8">
+          <span className="sm:text-[18px] text-[16px] text-black md:font-[600] font-[500] md:text-[25px] mt-8">
             with the New iphone 15 pro
           </span>
         </div>
@@ -30,12 +30,13 @@ const Banner = () => {
           <Link href={"#products"} scroll={true}>
             <Button
               title="Be Pro"
-              width="w-[95px]"
+              width="w-max "
               onClick={() => {}}
-              padding="px-4"
+              padding="px-2 md:px-4"
+              fontSize="lg:text-lg sm:text-base text-[14px]"
               bg="bg-black"
               color="text-white"
-              weight="font-[700]"
+              weight="lg:font-[500] sm:font-[400] font-[400]"
             ></Button>
           </Link>
           <Link href={"#products"}>
@@ -44,6 +45,7 @@ const Banner = () => {
               width="w-content"
               onClick={() => {}}
               padding="px-4"
+              fontSize="lg:text-lg sm:text-base text-[14px]"
               bg=""
               color="text-black"
               weight="font-[500]"
@@ -71,7 +73,7 @@ const Banner = () => {
         <Image
           src="/appleflat.png"
           alt="iphone 14 pro max"
-          className="object-contain flex relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          className="object-contain  h-auto w-autoflex relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           fill
         />
       </div>

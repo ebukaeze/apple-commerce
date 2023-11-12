@@ -50,8 +50,8 @@ function Products({ product }: Props) {
               <p className="text-slate-300"> ${product.price}</p>
             </div>
           </div>
-          <div className="cartButton" onClick={addItemToCart}>
-            <ShoppingCartIcon className="h-8 w-8 text-white"></ShoppingCartIcon>
+          <div className="cartButton xs:h-10 xs:w-10" onClick={addItemToCart}>
+            <ShoppingCartIcon className="h-8 w-8 sm:h-6 sm:w-6 xs:h-5 xs:w-5 text-white"></ShoppingCartIcon>
           </div>
         </div>
         {canShow && <ContinueCard />}
