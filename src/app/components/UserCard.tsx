@@ -57,6 +57,7 @@ export default function UserCard({ user, pagetype }: Props) {
             onClick={() => {}}
             width="w-[100%]"
             weight="font-medium"
+            fontSize="text-lg"
             padding="px-4 py-2"
             bg="black"
             color="white"
