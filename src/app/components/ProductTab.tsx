@@ -26,7 +26,7 @@ const ProductTab = ({ categories, products }: Props) => {
               key={category._id}
               id={category._id}
               className={({ selected }) =>
-                `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light
+                `whitespace-nowrap rounded-t-lg py-3 px-4 text-sm font-light
          outline-none md:py-4 md:px-6 md:text-base transition ease-in-out duration-100 delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-gray-800 hover:text-white
          ${
            selected

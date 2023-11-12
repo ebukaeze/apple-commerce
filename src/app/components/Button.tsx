@@ -9,12 +9,14 @@ interface props {
   bg: string;
   color: string;
   weight: string;
+  fontSize: string;
 }
 
 const Button = ({
   title,
   onClick,
   width,
+  fontSize,
   padding,
   loading,
   bg,
@@ -25,7 +27,7 @@ const Button = ({
     <button
       className={`ease group inline-flex relative py-4 ${
         width ? width : "w-auto"
-      } ${bg ? bg : "bg-transparent"}
+      } ${bg ? bg : "bg-transparent"} ${fontSize ? fontSize : "text-base"}
     rounded-lg cursor-pointer items-center justify-center box-border outline-1 
     border border-black ${padding ? padding : "px-8"}
     ${color ? color : "text-white"} ${weight ? weight : "font-medium"}
