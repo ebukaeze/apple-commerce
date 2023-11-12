@@ -1,10 +1,8 @@
 import React, { Suspense } from "react";
-import { FetchPostJSON } from "../libs/api-helpers";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCartTotal } from "../redux/cartSlice";
 import { Currency } from "react-tender";
-import Button from "./Button";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Stripe from "stripe";
