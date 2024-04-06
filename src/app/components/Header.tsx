@@ -16,7 +16,12 @@ import { useSession, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-const Header = () => {
+type HeaderColors = {
+  color?: string;
+  bgcolor?: string;
+};
+
+const Header = ({ color, bgcolor }: HeaderColors) => {
   const items = useSelector(selectCartItems);
   const [showNavBar, setShowNavBar] = useState(false);
   const router = useRouter();
@@ -37,13 +42,13 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full h-14 flex items-center justify-around fixed top-0 left-0 z-50 border-none lg:fixed lg:w-full ${
+      className={`w-full h-16 flex items-center justify-center fixed top-0 left-0 z-50 border-none lg:fixed lg:w-full ${
         showNavBar && "glassMorphism"
       } transition-all 0.3s ease-in-out duration-75`}
     >
       <nav
-        className={`w-full flex px-4 items-center justify-around ${
-          showNavBar ? "text-zinc-200" : "text-gray-800"
+        className={`w-full flex px-14 items-center md:justify-around justify-between h-16 ${color} ${
+          showNavBar && "text-zinc-200"
         }`}
       >
         <div className="flex items-center">
@@ -53,17 +58,19 @@ const Header = () => {
               alt="apple"
               width={18}
               height={18}
-              className={`object-contain ${showNavBar && "invert"}`}
+              className={`object-contain ${bgcolor} ${showNavBar && "invert"}`}
             />
           </Link>
         </div>
-        <div className="hidden items-center md:flex justify-center space-x-6 ">
+        <div className="hidden items-center md:flex justify-center">
           <ul className="flex items-center px-2">
             <li>
               <Link
                 href="/#products"
                 scroll={true}
-                className={`headerLink ${showNavBar && "text-zinc-200"}`}
+                className={`headerLink ${color} ${
+                  showNavBar ? "text-zinc-200" : "text-neutral-700"
+                }`}
               >
                 Product
               </Link>
@@ -71,7 +78,9 @@ const Header = () => {
             <li>
               <Link
                 href="/"
-                className={`headerLink ${showNavBar && "text-zinc-200"}`}
+                className={`headerLink ${color} ${
+                  showNavBar && "text-zinc-200"
+                }`}
               >
                 Explore
               </Link>
@@ -79,7 +88,9 @@ const Header = () => {
             <li>
               <a
                 href="/"
-                className={`headerLink ${showNavBar && "text-zinc-200"}`}
+                className={`headerLink ${color} ${
+                  showNavBar && "text-zinc-200"
+                }`}
               >
                 Support
               </a>
@@ -87,7 +98,9 @@ const Header = () => {
             <li>
               <a
                 href="/"
-                className={`headerLink ${showNavBar && "text-zinc-200"}`}
+                className={`headerLink ${color} ${
+                  showNavBar && "text-zinc-200"
+                }`}
               >
                 Businesses
               </a>
@@ -96,7 +109,7 @@ const Header = () => {
         </div>
         <div className="flex items-center justify-between gap-x-6 mx-4 px-3">
           <MagnifyingGlassIcon
-            className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
+            className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${color} ${
               showNavBar && "text-white"
             }`}
           />
@@ -114,7 +127,7 @@ const Header = () => {
               </div>
             )}
             <ShoppingBagIcon
-              className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
+              className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${color} ${
                 showNavBar && "text-white"
               }`}
             />
@@ -146,7 +159,7 @@ const Header = () => {
           ) : (
             <Link href={"/api/auth/signin?callbackUrl=/client"}>
               <UserCircleIcon
-                className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${
+                className={`h-5 w-5 text-gray-800 opacity-90 hover:opacity-100 cursor-pointer ${color} ${
                   showNavBar && "text-white"
                 }`}
               />

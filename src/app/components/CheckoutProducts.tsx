@@ -36,7 +36,7 @@ const CheckoutProducts = ({ id, items }: Props) => {
     } else return str;
   };
   return (
-    <tbody className="w-full gap-y-3 space-y-4 mt-3 divide-y text-[12px] border-b-2 border-spacing-4">
+    <tbody className="w-full gap-y-3 space-y-4 mt-3  divide-opacity-60 divide-y text-[12px] border-b border-gray-200 py-6 border-spacing-4">
       <tr className="my-3 border-spacing-8">
         <td className="inline-flex sm:flex-row flex-col border-spacing-4">
           <Image
@@ -44,7 +44,7 @@ const CheckoutProducts = ({ id, items }: Props) => {
             alt="image"
             width={40}
             height={40}
-            className="sm:h-24 sm:w-24 w-20 h-20 object-contain border border-gray-400 mr-2"
+            className="sm:h-24 sm:w-24 w-20 h-20 object-contain border border-gray-200 mr-2"
           />
           <div className="flex flex-col items-start">
             <h2 className="sm:text-lg text-sm font-medium">{items[0].title}</h2>

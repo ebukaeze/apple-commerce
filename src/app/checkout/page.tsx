@@ -28,11 +28,11 @@ const Checkout = () => {
   }, [items]);
 
   return (
-    <div className="w-full flex flex-col items-center bg-[#ececec] h-full pb-8">
+    <div className="w-full flex flex-col items-center bg-slate-50 h-full pb-8">
       <div className="h-[14vh] w-full flex bg-slate-50 items-center justify-start p-6 mt-4">
-        <h1 className="text-4xl font-[500] gap-y-4 tracking-normal">
+        {/* <h1 className="text-4xl font-[500] gap-y-4 space-y-10 mt-8 space-x-5 tracking-normal md:text-4xl sm:text-3xl xs:text-2xl">
           {items.length > 0 ? "Review Your Cart" : "Your Cart is Empty"}
-        </h1>
+        </h1> */}
       </div>
       {items.length === 0 && (
         <div className="flex w-full px-8 items-center flex-col space-y-10 justify-start mt-10 h-[80vh]">
@@ -72,8 +72,8 @@ const Checkout = () => {
             h-max px-4 space-y-4 py-6 shadow-sm"
             >
               <table className="table-auto w-full h-full space-y-4">
-                <thead className="text-left uppercase py-4 font-semibold text-1xl divide-y-2 border-b border-black border-spacing-4 mb-6">
-                  <tr className="mb-4">
+                <thead className="text-left uppercase py-4 font-semibold text-1xl divide-y-2 divide-opacity-60 border-b border-gray-400 border-spacing-4 mb-6 pb-6">
+                  <tr className="mb-4 pb-5">
                     <th>Apple</th>
                     <th>Price</th>
                     <th>Quantity</th>

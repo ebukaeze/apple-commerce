@@ -5,7 +5,7 @@ import Loading from "./loading";
 
 const CheckoutLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="bg-zinc-50 py-8">
+    <section className="bg-white">
       <Header />
       <Suspense fallback={<Loading />}>{children}</Suspense>
       <Footer />

@@ -10,6 +10,7 @@ import getStripe from "../libs/get-stripe";
 import { loadStripe } from "@stripe/stripe-js";
 import { StripeError } from "@stripe/stripe-js";
 import Loading from "../checkout/loading";
+import GsapFromTo from "./Gsap/GsapFromTo";
 
 interface Props {
   items: Product[];
@@ -158,7 +159,7 @@ const OrderSummary = ({ items }: Props) => {
             </p>
           </div>
           <Link href="/" className="w-full flex mt-8">
-            <Suspense fallback={"Loading..."}>
+            <Suspense fallback={<GsapFromTo />}>
               <button
                 className="w-full px-3 bg-stone-800 text-[18px] text-white
             font-medium flex items-center justify-center"

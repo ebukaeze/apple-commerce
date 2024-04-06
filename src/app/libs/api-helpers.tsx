@@ -10,7 +10,7 @@ export async function FetchPostJSON(url: string, data?: {}) {
       },
       redirect: "follow",
       referrerPolicy: "no-referrer",
-      body: JSON.stringify(data || {}), //body data must match content type
+      body: JSON.stringify(data), //body data must match content type
     });
 
     return await response.json();
