@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoCarousel = () => {
-  const videoRef = useRef<(HTMLVideoElement | null | any)[]>([]);
+  const videoRef = useRef<HTMLVideoElement[]>([]);
   const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
   const videoDivRef = useRef<any>([]);
 
@@ -157,7 +157,7 @@ const VideoCarousel = () => {
                   className={`${
                     item.id === 2 && "translate-x-44"
                   } pointer-events-none`}
-                  ref={(el) => (videoRef.current[i] = el)}
+                  ref={(el: HTMLVideoElement) => (videoRef.current[i] = el)}
                   onPlay={() => {
                     setVideo((prevVideo) => ({
                       ...prevVideo,
