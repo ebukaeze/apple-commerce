@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { replayImg, playImg, pauseImg } from "../utils";
 import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoCarousel = () => {
   const videoRef = useRef<(HTMLVideoElement | null | any)[]>([]);
@@ -27,7 +28,6 @@ const VideoCarousel = () => {
       duration: 2,
       ease: "power2.inOut",
     });
-
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -65,7 +65,7 @@ const VideoCarousel = () => {
           if (progress != currentProgress) {
             currentProgress = progress;
           }
-
+          //set the width of the bar
           gsap.to(videoDivRef.current[videoId], {
             width:
               window.innerWidth < 760
@@ -74,11 +74,14 @@ const VideoCarousel = () => {
                 ? "10vw"
                 : "4vw",
           });
+
+          //set the background color of the progress bar
           gsap.to(span[videoId], {
             width: `${currentProgress}%`,
             backgroundColor: "white",
           });
         },
+        // when the video is ended, replace the progress bar with the indicator and change the background color
         onComplete: () => {
           gsap.to(videoDivRef.current[videoId], {
             width: "12px",
