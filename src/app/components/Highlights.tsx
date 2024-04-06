@@ -32,12 +32,12 @@ const Highlights = () => {
     bg-[#1B1B1B]"
     >
       <div className="w-screen">
-        <div className="mb-12 w-full flex items-end justify-between px-10 max-w-screen-xl">
-          <h1 id="title" className="section-heading opacity-0">
+        <div className="mb-12 w-full flex items-end xs:items-start justify-between px-10 xs:px-2 max-w-screen-xl">
+          <h1 id="title" className="section-heading opacity-0 xs:text-lg">
             Get the highlights
           </h1>
           <div className="flex flex-wrap items-center gap-2">
-            <p className="link title">watch the film</p>
+            <p className="link title xs:text-sm">watch the film</p>
             <Image
               src={watchImg}
               alt="watch"
@@ -45,7 +45,7 @@ const Highlights = () => {
               height={20}
               className="mr-2"
             />
-            <p className="link title">watch the event</p>
+            <p className="link title xs:text-sm">watch the event</p>
             <Image
               src={rightImg}
               alt="right img"
