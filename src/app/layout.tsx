@@ -1,20 +1,28 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import type { AppProps } from "next/app";
-import { Inter, Poppins, Lora } from "next/font/google";
+import { siteConfig } from "../../config/site";
+import { Poppins } from "next/font/google";
 import { Providers } from "./redux/provider";
 import AuthProvider from "./context/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
-const inter = Inter({ subsets: ["latin"] });
-const lora = Lora({ subsets: ["latin"] });
+
 const poppinsFont = Poppins({
-  weight: "500",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-poppins",
 });
 export const metadata: Metadata = {
-  title: "Apple redesign",
-  description: "Get the latest apple technologies",
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: [
+    {
+      url: "/apple2.png",
+      href: "/apple2.png",
+    },
+  ],
 };
 
 export default function RootLayout({
