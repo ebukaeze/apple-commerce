@@ -6,17 +6,15 @@ import { useGSAP } from "@gsap/react";
 const Hero2 = () => {
   const container = useRef<any>();
   const container2 = useRef<any>();
-  const [videoSrc, setvideoSrc] = useState(
-    window.innerWidth < 760 ? "/videos/smallHero.mp4" : "/videos/hero.mp4"
-  );
+  // const [videoSrc, setvideoSrc] = useState("/videos/hero.mp4");
 
-  const handleVideoSrcSet = () => {
+  /*   const handleVideoSrcSet = () => {
     if (window.innerWidth < 760) {
       setvideoSrc("/videos/smallHero.mp4");
     } else {
       setvideoSrc("/videos/hero.mp4");
     }
-  };
+  }; 
 
   useEffect(() => {
     window.addEventListener("reset", handleVideoSrcSet);
@@ -25,6 +23,7 @@ const Hero2 = () => {
       window.removeEventListener("resize", handleVideoSrcSet);
     };
   }, []);
+  */
 
   useGSAP(
     () => {
@@ -50,9 +49,19 @@ const Hero2 = () => {
         <p id="hero" className="hero-title">
           iPhone 15 Pro
         </p>
-        <div className="md:w-10/12 w-9/12 pointer-events-none">
-          <video autoPlay muted playsInline={true} key={videoSrc}>
-            <source src={videoSrc} />
+        <div className="md:w-10/12 w-9/12 pointer-events-none md:flex hidden">
+          <video autoPlay muted playsInline={true} key={"/videos/hero.mp4"}>
+            <source src={"/videos/hero.mp4"} />
+          </video>
+        </div>
+        <div className="md:w-10/12 w-9/12 pointer-events-none md:hidden flex">
+          <video
+            autoPlay
+            muted
+            playsInline={true}
+            key={"/videos/smallHero.mp4"}
+          >
+            <source src={"/videos/smallHero.mp4"} />
           </video>
         </div>
       </div>
