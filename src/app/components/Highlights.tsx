@@ -8,31 +8,27 @@ import VideoCarousel from "./VideoCarousel";
 const Highlights = () => {
   const container = useRef<any>();
 
-  useGSAP(
-    () => {
-      gsap.to("#title", {
-        opacity: 1,
-        y: 0,
-        delay: 1.5,
-      });
-      gsap.to(".title", {
-        opacity: 1,
-        y: 0,
-        delay: 1.5,
-        stagger: 0.25,
-      });
-    },
-    { scope: container }
-  );
+  useGSAP(() => {
+    gsap.to("#title", {
+      opacity: 1,
+      y: 0,
+      delay: 1.5,
+    });
+    gsap.to(".title", {
+      opacity: 1,
+      y: 0,
+      delay: 1.5,
+      stagger: 0.25,
+    });
+  });
   return (
     <section
-      ref={container}
       id="highlights"
       className="w-full h-full overflow-hidden common-padding
     bg-[#1B1B1B]"
     >
       <div className="w-screen">
-        <div className="mb-12 w-full flex items-end xs:items-start justify-between px-10 xs:px-2 max-w-screen-xl">
+        <div className="mb-12 w-full flex items-end xs:items-start justify-between px-10 xs:px-2 max-w-screen-xl xs:flex-col">
           <h1 id="title" className="section-heading opacity-0 xs:text-lg">
             Get the highlights
           </h1>
