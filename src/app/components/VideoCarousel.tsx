@@ -55,7 +55,7 @@ const VideoCarousel = () => {
       if (videoRef.current[videoId]) {
         videoRef.current[videoId]!.muted = true; // Ensure video is muted
       }
-      videoRef.current[videoId].play().catch((err) => {
+      videoRef.current[videoId]!.play().catch((err) => {
         console.error("Autoplay failed:", err);
       });
     }
