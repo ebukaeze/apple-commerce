@@ -23,25 +23,30 @@ const VideoCarousel = () => {
 
   const { isEnd, startPlay, videoId, isLastvideo, isPlaying } = video;
 
-  useGSAP(() => {
-    gsap.to("#slider", {
-      transform: `translateX(${-100 * videoId}%)`,
-      duration: 2,
-      ease: "power2.inOut",
-    });
-    gsap.to("#video", {
-      scrollTrigger: {
-        trigger: "#video",
-        toggleActions: "restart none none none",
-      },
-      onComplete: () => {
-        setVideo((prev) => ({
-          ...prev,
-          startPlay: true,
-          isPlaying: true,
-        }));
-      },
-    });
+  useEffect(() => {
+    const slider = document.querySelector("#slider");
+    const video = document.querySelector("#video");
+
+    if (slider && video) {
+      gsap.to(slider, {
+        transform: `translateX(${-100 * videoId}%)`,
+        duration: 2,
+        ease: "power2.inOut",
+      });
+      gsap.to(video, {
+        scrollTrigger: {
+          trigger: video,
+          toggleActions: "restart none none none",
+        },
+        onComplete: () => {
+          setVideo((prev) => ({
+            ...prev,
+            startPlay: true,
+            isPlaying: true,
+          }));
+        },
+      });
+    }
   }, [isEnd, videoId]);
 
   useEffect(() => {
@@ -66,28 +71,33 @@ const VideoCarousel = () => {
 
     const span = videoSpanRef.current;
     if (span[videoId]) {
+      const targetSpan = span[videoId];
+      if (!targetSpan) return; // Ensure the target exists before animating
+
       //animate the progress of current video
-      let anim = gsap.to(span[videoId], {
+      let anim = gsap.to(targetSpan, {
         onUpdate: () => {
           const progress = Math.ceil(anim.progress() * 100);
           if (progress != currentProgress) {
             currentProgress = progress;
           }
           //set the width of the bar
-          gsap.to(videoDivRef.current[videoId], {
-            width:
-              window.innerWidth < 760
-                ? "10vw"
-                : window.innerWidth < 1200
-                ? "10vw"
-                : "4vw",
-          });
+          if (videoDivRef.current[videoId]) {
+            gsap.to(videoDivRef.current[videoId], {
+              width:
+                window.innerWidth < 760
+                  ? "10vw"
+                  : window.innerWidth < 1200
+                  ? "10vw"
+                  : "4vw",
+            });
 
-          //set the background color of the progress bar
-          gsap.to(span[videoId], {
-            width: `${currentProgress}%`,
-            backgroundColor: "white",
-          });
+            //set the background color of the progress bar
+            gsap.to(span[videoId], {
+              width: `${currentProgress}%`,
+              backgroundColor: "white",
+            });
+          }
         },
         // when the video is ended, replace the progress bar with the indicator and change the background color
         onComplete: () => {
@@ -160,20 +170,24 @@ const VideoCarousel = () => {
             currentProgress = progress;
 
             // set the width of the progress bar
-            gsap.to(videoDivRef.current[videoId], {
-              width:
-                window.innerWidth < 760
-                  ? "10vw" // mobile
-                  : window.innerWidth < 1200
-                  ? "10vw" // tablet
-                  : "4vw", // laptop
-            });
+            if (videoDivRef.current[videoId]) {
+              gsap.to(videoDivRef.current[videoId], {
+                width:
+                  window.innerWidth < 760
+                    ? "10vw" // mobile
+                    : window.innerWidth < 1200
+                    ? "10vw" // tablet
+                    : "4vw", // laptop
+              });
+            }
 
             // set the background color of the progress bar
-            gsap.to(span[videoId], {
-              width: `${currentProgress}%`,
-              backgroundColor: "white",
-            });
+            if (span[videoId]) {
+              gsap.to(span[videoId], {
+                width: `${currentProgress}%`,
+                backgroundColor: "white",
+              });
+            }
           }
         },
 
