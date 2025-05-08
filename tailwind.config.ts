@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      xs: { max: "375px" },
+      xs: { max: "398px" },
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 

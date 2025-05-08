@@ -3,20 +3,25 @@ import React from "react";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
+import localFont from "next/font/local";
+import { cn } from "../libs/utils";
+
+const headingFont = localFont({
+  src: "../../../public/fonts/font.woff2",
+});
 
 const Banner = () => {
   return (
     <section
-      className="w-full grid grid-cols-1 items-center lg:grid-cols-9 bg-[rgba(250,250,250,0.5)]  md:max-w-[1229px] md:mx-auto h-[90vh]
+      className="w-full grid grid-cols-1 items-center lg:grid-cols-9 bg-[rgba(250,250,250,0.5)]  md:max-w-[1229px] md:mx-auto h-[100vh]
       space-y-1 gap-y-1 sticky top-0 justify-items-stretch sm:text-start mt-8 xs:mt-12 md:mt-2 lg:mt-8"
     >
-      <div className="w-full grid col-span-5 order-1 col-start-1 lg:justify-self-start space-y-6 gap-y-4">
+      <div
+        className={cn(
+          `w-full grid col-span-5 order-1 col-start-1 lg:justify-self-start space-y-6 gap-y-4`,
+          headingFont.className
+        )}
+      >
         <div className="w-[100%] flex mt-8 md:mt-4 lg:mt-0 flex-col px-8 lg:text-start text-center before:absolute before:h-[300px] lg:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-transparent before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] lg:after:translate-x-1/3 after:bg-gradient-conic after:from-pink-200 after:via-sky-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
           <h1 className="sm:text-6xl xs:text-3xl text-5xl tracking-[2px] justify-self-start md:text-7xl md:leading-[6rem] text-black md:font-[900] sm:font-[700] font-[600] sm:text-[54px] lg:font-[900] ">
             {" "}

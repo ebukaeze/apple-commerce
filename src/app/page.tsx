@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Hero } from "./components/Hero";
 import Hero2 from "./components/Hero2";
 import Highlights from "./components/Highlights";
+import Model from "./components/Model";
 
 //Backend Code
 
@@ -27,6 +28,7 @@ export default async function Home() {
         className="w-full relative z-40 mt-[-105vh] min-h-screen bg-[#1B1B1B]"
       >
         <Highlights />
+        <Model />
         <div className="flex items-center flex-col justify-center w-full max-w-[1154px] mx-auto py-10 space-y-10 ">
           <h2 className="text-xl text-white tracking-wide font-medium">
             New Promos

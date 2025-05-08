@@ -8,11 +8,11 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoCarousel = () => {
-  const videoRef = useRef<HTMLVideoElement[]>([]);
-  const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const videoDivRef = useRef<any>([]);
-
-  const [loadedData, setLoadedData] = useState<any>([]);
+  const videoRef = useRef<Array<HTMLVideoElement | null>>([]);
+  const videoSpanRef = useRef<Array<HTMLSpanElement | null>>([]);
+  const videoDivRef = useRef<(HTMLDivElement | null)[]>([]);
+  const container = useRef<any>();
+  const [loadedData, setLoadedData] = useState([{}]);
   const [video, setVideo] = useState({
     isEnd: false,
     startPlay: false,
@@ -23,34 +23,46 @@ const VideoCarousel = () => {
 
   const { isEnd, startPlay, videoId, isLastvideo, isPlaying } = video;
 
-  useGSAP(() => {
-    gsap.to("#slider", {
-      transform: `translateX(${-100 * videoId}%)`,
-      duration: 2,
-      ease: "power2.inOut",
-    });
-    gsap.to("#video", {
-      scrollTrigger: {
-        trigger: "#video",
-        toggleActions: "restart none none none",
-      },
-      onComplete: () => {
-        setVideo((prev) => ({
-          ...prev,
-          startPlay: true,
-          isPlaying: true,
-        }));
-      },
-    });
+  useEffect(() => {
+    const slider = document.querySelector("#slider");
+    const video = document.querySelector("#video");
+
+    if (slider && video) {
+      gsap.to(slider, {
+        transform: `translateX(${-100 * videoId}%)`,
+        duration: 2,
+        ease: "power2.inOut",
+      });
+      gsap.to(video, {
+        scrollTrigger: {
+          trigger: video,
+          toggleActions: "restart none none none",
+        },
+        onComplete: () => {
+          setVideo((prev) => ({
+            ...prev,
+            startPlay: true,
+            isPlaying: true,
+          }));
+        },
+      });
+    }
   }, [isEnd, videoId]);
 
   useEffect(() => {
     if (loadedData.length > 3) {
       if (!isPlaying) {
-        videoRef.current[videoId]?.pause();
+        videoRef.current[videoId]?.pause?.();
       } else {
-        startPlay && videoRef.current[videoId]?.play();
+        startPlay && videoRef.current[videoId]?.play?.();
       }
+    } else if (videoRef.current[videoId]) {
+      if (videoRef.current[videoId]) {
+        videoRef.current[videoId]!.muted = true; // Ensure video is muted
+      }
+      videoRef.current[videoId]!.play().catch((err) => {
+        console.error("Autoplay failed:", err);
+      });
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
@@ -59,28 +71,33 @@ const VideoCarousel = () => {
 
     const span = videoSpanRef.current;
     if (span[videoId]) {
+      const targetSpan = span[videoId];
+      if (!targetSpan) return; // Ensure the target exists before animating
+
       //animate the progress of current video
-      let anim = gsap.to(span[videoId], {
+      let anim = gsap.to(targetSpan, {
         onUpdate: () => {
           const progress = Math.ceil(anim.progress() * 100);
           if (progress != currentProgress) {
             currentProgress = progress;
           }
           //set the width of the bar
-          gsap.to(videoDivRef.current[videoId], {
-            width:
-              window.innerWidth < 760
-                ? "10vw"
-                : window.innerWidth < 1200
-                ? "10vw"
-                : "4vw",
-          });
+          if (videoDivRef.current[videoId]) {
+            gsap.to(videoDivRef.current[videoId], {
+              width:
+                window.innerWidth < 760
+                  ? "10vw"
+                  : window.innerWidth < 1200
+                  ? "10vw"
+                  : "4vw",
+            });
 
-          //set the background color of the progress bar
-          gsap.to(span[videoId], {
-            width: `${currentProgress}%`,
-            backgroundColor: "white",
-          });
+            //set the background color of the progress bar
+            gsap.to(span[videoId], {
+              width: `${currentProgress}%`,
+              backgroundColor: "white",
+            });
+          }
         },
         // when the video is ended, replace the progress bar with the indicator and change the background color
         onComplete: () => {
@@ -98,8 +115,8 @@ const VideoCarousel = () => {
       }
       const updateAnim = () => {
         anim.progress(
-          videoRef.current[videoId].currentTime /
-            hightlightsSlides[videoId].videoDuration
+          (videoRef.current[videoId]?.currentTime ?? 0) /
+            (hightlightsSlides[videoId]?.videoDuration ?? 1)
         );
       };
 
@@ -113,6 +130,113 @@ const VideoCarousel = () => {
 
   const handLoadedMetadata = (i: any, e: any) =>
     setLoadedData((prev: any) => [...prev, e]);
+
+  useGSAP(() => {
+    // slider animation to move the video out of the screen and bring the next video in
+    gsap.to("#slider", {
+      transform: `translateX(${-100 * videoId}%)`,
+      duration: 2,
+      ease: "power2.inOut", // show visualizer https://gsap.com/docs/v3/Eases
+    });
+
+    // video animation to play the video when it is in the view
+    gsap.to("#video", {
+      scrollTrigger: {
+        trigger: "#video",
+        toggleActions: "restart none none none",
+      },
+      onComplete: () => {
+        setVideo((pre) => ({
+          ...pre,
+          startPlay: true,
+          isPlaying: true,
+        }));
+      },
+    });
+  }, [isEnd, videoId]);
+
+  useEffect(() => {
+    let currentProgress = 0;
+    let span = videoSpanRef.current;
+
+    if (span[videoId]) {
+      // animation to move the indicator
+      let anim = gsap.to(span[videoId], {
+        onUpdate: () => {
+          // get the progress of the video
+          const progress = Math.ceil(anim.progress() * 100);
+
+          if (progress != currentProgress) {
+            currentProgress = progress;
+
+            // set the width of the progress bar
+            if (videoDivRef.current[videoId]) {
+              gsap.to(videoDivRef.current[videoId], {
+                width:
+                  window.innerWidth < 760
+                    ? "10vw" // mobile
+                    : window.innerWidth < 1200
+                    ? "10vw" // tablet
+                    : "4vw", // laptop
+              });
+            }
+
+            // set the background color of the progress bar
+            if (span[videoId]) {
+              gsap.to(span[videoId], {
+                width: `${currentProgress}%`,
+                backgroundColor: "white",
+              });
+            }
+          }
+        },
+
+        // when the video is ended, replace the progress bar with the indicator and change the background color
+        onComplete: () => {
+          if (isPlaying) {
+            gsap.to(videoDivRef.current[videoId], {
+              width: "12px",
+            });
+            gsap.to(span[videoId], {
+              backgroundColor: "#afafaf",
+            });
+          }
+        },
+      });
+
+      if (videoId == 0) {
+        anim.restart();
+      }
+
+      // update the progress bar
+      const animUpdate = () => {
+        anim.progress(
+          (videoRef.current[videoId]?.currentTime ?? 0) /
+            (hightlightsSlides[videoId]?.videoDuration ?? 1)
+        );
+      };
+
+      if (isPlaying) {
+        // ticker to update the progress bar
+        gsap.ticker.add(animUpdate);
+      } else {
+        // remove the ticker when the video is paused (progress bar is stopped)
+        gsap.ticker.remove(animUpdate);
+      }
+    }
+  }, [videoId, startPlay]);
+
+  useEffect(() => {
+    if (loadedData.length > 3) {
+      if (!isPlaying) {
+        videoRef.current[videoId]?.pause();
+      } else {
+        startPlay && videoRef.current[videoId]?.play();
+      }
+    }
+  }, [startPlay, videoId, isPlaying, loadedData]);
+
+  // vd id is the id for every video until id becomes number 3
 
   const handleProcess = (type: string, i: number) => {
     switch (type) {
@@ -139,6 +263,9 @@ const VideoCarousel = () => {
         return video;
     }
   };
+
+  const handleLoadedMetaData = (i: number, e: any) =>
+    setLoadedData((pre: any) => [...pre, e]);
   return (
     <div>
       <div className="w-full  max-w-screen-xl mx-auto flex items-center">
@@ -156,8 +283,8 @@ const VideoCarousel = () => {
                   muted
                   className={`${
                     item.id === 2 && "translate-x-44"
-                  } pointer-events-none`}
-                  ref={(el: HTMLVideoElement) => (videoRef.current[i] = el)}
+                  } pointer-events-none video`}
+                  ref={(el) => (videoRef.current[i] = el)}
                   onPlay={() => {
                     setVideo((prevVideo) => ({
                       ...prevVideo,
@@ -169,7 +296,7 @@ const VideoCarousel = () => {
                       ? handleProcess("video-end", i)
                       : handleProcess("video-last", i)
                   }
-                  onLoadedMetadata={(e) => handLoadedMetadata(i, e)}
+                  onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
                 >
                   <source src={item.video} type="video/mp4" />
                 </video>
@@ -194,11 +321,11 @@ const VideoCarousel = () => {
             <span
               key={i}
               className="mx-2 h-3 w-3 rounded-full cursor-pointer bg-gray-400 relative"
-              ref={(el) => (videoDivRef.current[i] = el)}
+              ref={(el: any) => (videoDivRef.current[i] = el)}
             >
               <span
                 className="absolute h-full w-full rounded-full"
-                ref={(el) => (videoSpanRef.current[i] = el)}
+                ref={(el: any) => (videoSpanRef.current[i] = el)}
               />
             </span>
           ))}
